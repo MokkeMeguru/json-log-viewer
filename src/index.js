@@ -18,6 +18,7 @@ if (!logFile) {
 
 const screen = blessed.screen({
   smartCSR: true,
+  fullUnicode: true, 
   log: opts.log,
 });
 screen.key(['C-c'], function(_ch, _key) {
