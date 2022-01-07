@@ -6,11 +6,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: babashka script
-        uses: tzafrirben/babashka-docker-action@v1.1
-        id: bb_script
+      - name: Setup Babashka
+        uses: turtlequeue/setup-babashka@v1.3.0
         with:
-          bb_src: "./.github/scripts/liveness"
-          bb_args: "run --parallel liveness"
+          babashka-version: 0.7.3
+      - name: Check bb runs
+        run: bb --version
+      - name: liveness
+        working-directory: ./.github/scripts/liveness
+        run: bb run --parallel liveness
       - name: Get the script output
-        run: echo "${{ steps.bb_script.outputs.bb_out }}"
+        run: echo "${{ steps.liveness.outputs }}"
