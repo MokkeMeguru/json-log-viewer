@@ -1,0 +1,12 @@
+{:tasks
+ {:requires ([clojure.java.shell :refer [sh]])
+  :init (def log (Object.))
+
+  :enter (locking log
+           (binding [*out* *err*]
+             (println (str (:name (current-task)) ":") (java.util.Date.))))
+  hello  (Thread/sleep 5000)
+  we (Thread/sleep 7500)
+  are (Thread/sleep 10000)
+  clojure {:depends [hello we are]}
+  liveness {:task (time (run 'clojure))}}}
