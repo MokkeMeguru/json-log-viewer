@@ -7,7 +7,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: babashka script
-        uses: tzafrirben/babashka-docker-action@v0.3
+        uses: tzafrirben/babashka-docker-action@v1.1
         id: bb_script
         with:
           bb_src: "./.github/scripts/liveness"
