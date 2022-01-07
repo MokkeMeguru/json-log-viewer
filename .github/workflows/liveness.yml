@@ -15,5 +15,5 @@ jobs:
       - name: liveness
         working-directory: ./.github/scripts/liveness
         run: bb run --parallel liveness
-      - name: Get the script output
-        run: echo "${{ steps.liveness.outputs }}"
+      - name: stderr
+        run: echo "hello" 1>&2; sleep 1m; echo "stderr"
